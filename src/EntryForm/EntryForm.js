@@ -36,11 +36,7 @@ class EntryForm extends Component {
 }
 
 EntryForm.propTypes = {
-  updateAppState: PropTypes.func,
-}
-
-EntryForm.defaultProps = {
-  updateAppState: () => {},
+  updateAppState: PropTypes.func.isRequired,
 }
 
 export default EntryForm;
