@@ -12,6 +12,12 @@ Builds Javascript Bundle.
 Runs the app in the development mode.<br>
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
+## How To Use
+1. On Landing Page, enter in your github access key
+2. Once that works, you will see a list of the associated user's repositories
+3. Click on a repository to then see a list of issues appear on the right
+4. Issues can be reordered
+
 ## Testing
 To run suite of tests: `yarn test`
 

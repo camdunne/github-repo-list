@@ -22,9 +22,8 @@ app.post('/api/repositories', (req, res) => {
       res.send(repos);
     
     })
-    .catch((err) => {
-      console.log(err);
-      res.send(err);
+    .catch(() => {
+      res.send([]);
     });
   
 });
@@ -51,12 +50,12 @@ app.post('/api/issues', (req, res) => {
       }
       res.send(issues);
     })
-    .catch((err) => {
-      console.log(err);
-      res.send(err);
+    .catch(() => {
+      res.send([]);
     });
 });
 
 app.listen(port, () => {
+  /*eslint no-console: "off"*/
   console.log(`Example app listening on port ${port}!`);
 });
