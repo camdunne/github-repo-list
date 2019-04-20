@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { setIssues } from '../actions';
 import RepoListEntry from './RepoListEntry';
 
-const mapStateToProps = (state) => ({
-  apiKey: state.apiKey,
-  issues: state.issues
+const mapStateToProps = ({ apiKey, issues }) => ({
+  apiKey,
+  issues,
 });
 
 const mapDispatchToProps = (dispatch) => ({

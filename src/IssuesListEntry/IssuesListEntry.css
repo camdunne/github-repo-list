@@ -1,4 +1,28 @@
+.main {
+  padding: 20px;
+  min-height: 50px;
+  background-color: grey;
+}
+
+.container {
+  display: inline;
+}
 img {
   height: 50px;
   width: 50px; 
+  float: left;
+}
+
+.title {
+  font-size: 18px;
+  text-align: left;
+}
+
+.date{
+  font-size: 14px;
+  text-align: right;
+}
+
+.over {
+  border-top: 5px solid red;
 }

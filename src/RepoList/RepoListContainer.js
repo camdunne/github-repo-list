@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import RepoList from './RepoList';
 
-const mapStateToProps = (state) => ({
-  repos: state.repos,
+const mapStateToProps = ({ repos }) => ({
+  repos,
 });
 
 export default connect(

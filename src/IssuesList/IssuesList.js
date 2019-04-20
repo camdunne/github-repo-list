@@ -1,29 +1,28 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import IssuesListEntry from '../IssuesListEntry/IssuesListEntry';
+import IssuesListEntryContainer from '../IssuesListEntry/IssuesListEntryContainer';
 import './IssuesList.css';
 
 
-const IssuesList = ({ issues }) =>
-  (
-    <Fragment>
-      {issues.map((issue, i) => (
-        <IssuesListEntry
-          key={`issue-${i}`}
-          issue={issue}
-        />
-      ))}
-    </Fragment>
-  );
+const IssuesList = ({ issues }) => (
+  <Fragment>
+    {issues.map((issue, idx) => (
+      <IssuesListEntryContainer
+        key={`issue-${issue.id}`}
+        idx={idx}
+        issue={issue}
+      />
+    ))}
+  </Fragment>
+);
+
 
 IssuesList.propTypes = {
   issues: PropTypes.array,
-  apiKey: PropTypes.string
 };
 
 IssuesList.defaultTypes = {
   issues: [],
-  apiKey: '',
 };
 
 export default IssuesList;

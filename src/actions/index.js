@@ -8,9 +8,10 @@ export const setIssues = issues => ({
   issues
 });
 
-export const reorderIssues = id => ({
+export const reorderIssues = (dropId, idx) => ({
   type: 'REORDER_ISSUES',
-  id
+  dropId,
+  idx
 });
 
 export const setRepos = repos => ({

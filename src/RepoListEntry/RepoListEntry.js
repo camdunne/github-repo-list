@@ -4,7 +4,6 @@ import './RepoListEntry.css';
 import axios from 'axios';
 
 class RepoListEntry extends Component {
-  
   handleClick = () => {
     const { repo, apiKey, onClick } = this.props;
     axios.post('/api/issues', {
@@ -13,7 +12,6 @@ class RepoListEntry extends Component {
     })
       .then(({ data }) => {
         onClick(data);
-        window.localStorage.setItem(`issues-${apiKey}`, JSON.stringify(data));
       });
   }
 
@@ -21,7 +19,7 @@ class RepoListEntry extends Component {
     const { repo } = this.props;
 
     return (
-      <div onClick={this.handleClick} >
+      <div className="RepoListEntry-main" onClick={this.handleClick} >
         {repo.full_name}
       </div>
     );

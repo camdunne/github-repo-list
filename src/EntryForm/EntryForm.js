@@ -5,42 +5,14 @@ import './EntryForm.css';
 
 class EntryForm extends Component {
 
-  componentDidMount() {
-    const { onSetIssues, onSetApiKey } = this.props;
-    const apiKey = window.localStorage.getItem('apiKey');
-
-    if (apiKey) {
-      onSetApiKey(apiKey);
-    }
-
-    this.getRepos(apiKey);
-    let issues = window.localStorage.getItem(`issues-${apiKey}`);
-    
-    if (issues) {
-      issues = JSON.parse(issues);
-      onSetIssues(issues);
-    }
-    
-  }
-
   getRepos = (apiKey) => {
     const { onSetRepos } = this.props;
-    let repos = window.localStorage.getItem(`repos-${apiKey}`);
-
-    if (repos) {
-      
-      repos = JSON.parse(repos);
-      onSetRepos(repos);
-
-      return;
-    }
 
     axios.post('/api/repositories', {
       apiKey
     })
       .then(({ data }) => {
         onSetRepos(data);
-        window.localStorage.setItem(`repos-${apiKey}`, JSON.stringify(data));
       });
   }
 
@@ -51,8 +23,7 @@ class EntryForm extends Component {
     const apiKey  = e.target.querySelector('input[name="apiKey"]').value;
 
     onSubmit(apiKey);
-    window.localStorage.setItem('apiKey', apiKey);
-    this.getRepos();
+    this.getRepos(apiKey);
   }
 
   render () {

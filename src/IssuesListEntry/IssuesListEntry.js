@@ -3,15 +3,44 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import './IssuesListEntry.css';
 
+function getContainer (el) {
+  if (el.id === 'drag') return el;
+  const parent = el.parentElement;
+  if (parent.id === 'drag') return parent;
+}
+
 class IssuesListEntry extends Component {
+
+
   handleDragStart = (e) => {
-    console.log('handleDragStart', this.props.issue.title);
+    e.stopPropagation();
+    e.dataTransfer.effectAllowed = 'move';
+    const { idx } = this.props;
+    e.dataTransfer.setData('text/plain', idx);
   }
+
   handleDragOver = (e) => {
-    console.log('handleDragOver', this.props.issue.title);
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
+    const element = getContainer(e.target);
+    if (element) element.classList.add('over');
   }
+
+  handleDragLeave = (e) => {
+    e.stopPropagation();
+    const element = getContainer(e.target);
+    if (element) element.classList.remove('over');
+  }
+
   handleDrop = (e) => {
-    console.log('handleDrop', this.props.issue.title);
+    const { onDrop, idx } = this.props;
+    e.stopPropagation();
+    const element = getContainer(e.target);
+    if (element) element.classList.remove('over');
+ 
+    var dropId= e.dataTransfer.getData('text/plain');
+    onDrop(dropId, idx);
   }
 
   render() {
@@ -21,18 +50,22 @@ class IssuesListEntry extends Component {
 
     return (
       <div
-        className="drag"
+        id="drag"
+        className="drag main"
         draggable
-        onDragStart={(e)=>this.handleDragStart(e)}
-        onDragOver={(e)=>this.handleDragOver(e)}
-        onDrop={(e)=>this.handleDrop(e)}
+        onDragStart={this.handleDragStart}
+        onDragOver={this.handleDragOver}
+        onDragLeave={this.handleDragLeave}
+        onDrop={this.handleDrop}
       >
-        {(assigneeAvatar) ?
-          <img src={assigneeAvatar} /> : ''
-        }
-        {title}
-        {createdAt}
-        {updatedAt}
+        <div className="container">
+          {(assigneeAvatar) ?
+            <img src={assigneeAvatar} /> : ''
+          }
+          <div className="title">{title}</div>
+        </div>
+        <div className="date">Created: {createdAt}</div>
+        <div className="date">Updated: {updatedAt}</div>
       </div>
     );
   }
@@ -40,7 +73,9 @@ class IssuesListEntry extends Component {
 
 
 IssuesListEntry.propTypes = {
+  idx: PropTypes.number.isRequired,
   issue: PropTypes.object,
+  onDrop: PropTypes.func.isRequired,
 };
 
 IssuesListEntry.defaultTypes = {
