@@ -19,9 +19,11 @@
   ],
 
   "globals": {
-    "document": false,
-    "navigator": false,
-    "window": false
+    "document": true,
+    "navigator": true,
+    "window": true,
+    "it": true,
+    "expect": true
   },
 
   "extends": [

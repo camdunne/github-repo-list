@@ -14,8 +14,16 @@
 }
 .App-container {
   display: flex;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .App-container {
+    display: block;
+  }
 }
 
 .App-col {
+  padding-top: 20px;
   flex: 1;
 }

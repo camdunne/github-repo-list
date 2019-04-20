@@ -1,20 +1,25 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import IssuesListEntryContainer from '../IssuesListEntry/IssuesListEntryContainer';
-import './IssuesList.css';
 
+const IssuesList = ({ issues }) => {
+  if (issues.length) {
+    return (
+      <div className="App-col">
+        Issues
+        {issues.map((issue, idx) => (
+          <IssuesListEntryContainer
+            key={`issue-${issue.id}`}
+            idx={idx}
+            issue={issue}
+          />
+        ))}
+      </div>
+    );
+  }
 
-const IssuesList = ({ issues }) => (
-  <Fragment>
-    {issues.map((issue, idx) => (
-      <IssuesListEntryContainer
-        key={`issue-${issue.id}`}
-        idx={idx}
-        issue={issue}
-      />
-    ))}
-  </Fragment>
-);
+  return <div/>;
+};
 
 
 IssuesList.propTypes = {

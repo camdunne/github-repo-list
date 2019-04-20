@@ -1,19 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
 import RepoListEntryContainer from '../RepoListEntry/RepoListEntryContainer';
-import './RepoList.css';
-
 
 const RepoList = ({ repos }) => (
-  <Fragment>
+  <div className="App-col">
+    Repositories
     {repos.map((repo, i) => (
       <RepoListEntryContainer
         key={`repo-${i}`}
         repo={repo}
       />
     ))}
-  </Fragment>
+  </div>
 );
 
 

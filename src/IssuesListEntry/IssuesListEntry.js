@@ -10,36 +10,38 @@ function getContainer (el) {
 }
 
 class IssuesListEntry extends Component {
-
-
   handleDragStart = (e) => {
+    const { idx } = this.props;
+
     e.stopPropagation();
     e.dataTransfer.effectAllowed = 'move';
-    const { idx } = this.props;
     e.dataTransfer.setData('text/plain', idx);
   }
 
   handleDragOver = (e) => {
+    const element = getContainer(e.target);
     e.preventDefault();
     e.stopPropagation();
     e.dataTransfer.dropEffect = 'move';
-    const element = getContainer(e.target);
+
     if (element) element.classList.add('over');
   }
 
   handleDragLeave = (e) => {
-    e.stopPropagation();
     const element = getContainer(e.target);
+    e.stopPropagation();
+
     if (element) element.classList.remove('over');
   }
 
   handleDrop = (e) => {
     const { onDrop, idx } = this.props;
-    e.stopPropagation();
     const element = getContainer(e.target);
+    const dropId = Number(e.dataTransfer.getData('text/plain'));
+
     if (element) element.classList.remove('over');
- 
-    var dropId= e.dataTransfer.getData('text/plain');
+
+    e.stopPropagation();
     onDrop(dropId, idx);
   }
 
@@ -47,7 +49,8 @@ class IssuesListEntry extends Component {
     const { issue: { assigneeAvatar, title, created_at, updated_at} } = this.props;
     const createdAt = moment(created_at).format("MM/DD/YYYY");
     const updatedAt = moment(updated_at).fromNow();
-
+    const image = (assigneeAvatar)? assigneeAvatar : '/user.png';
+    
     return (
       <div
         id="drag"
@@ -59,9 +62,7 @@ class IssuesListEntry extends Component {
         onDrop={this.handleDrop}
       >
         <div className="container">
-          {(assigneeAvatar) ?
-            <img src={assigneeAvatar} /> : ''
-          }
+          <img src={image} />
           <div className="title">{title}</div>
         </div>
         <div className="date">Created: {createdAt}</div>

@@ -12,14 +12,8 @@ const App = ({ apiKey }) =>  (
         <EntryFormContainer /> :
 
         <div className="App-container">
-          <div className="App-col">
-                Repositories
-            <RepoListContainer />
-          </div>
-          <div className="App-col">
-                Issues
-            <IssuesListContainer />
-          </div>
+          <RepoListContainer />
+          <IssuesListContainer />
         </div>
       }
     </header>

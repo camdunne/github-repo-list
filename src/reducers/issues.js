@@ -3,13 +3,11 @@ const issues = (state = [], action) => {
   case 'SET_ISSUES':
     return action.issues;
   case 'REORDER_ISSUES':
-    var dropId = Number(action.dropId);
+    var { dropId, idx } = action;
     var draggedElement = state[dropId];
-    var insertBeforeElement = state[action.idx];
     var newState = [ ... state ];
     newState.splice(dropId, 1);
-    var newIdx = newState.indexOf(insertBeforeElement);
-    newState.splice(newIdx, 0, draggedElement);
+    newState.splice(idx, 0, draggedElement);
 
     return newState;
   default:

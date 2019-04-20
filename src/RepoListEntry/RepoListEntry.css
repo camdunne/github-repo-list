@@ -1,8 +1,12 @@
 .RepoListEntry-main {
   font-size: 18px;
   margin: 20px;
+  padding: 20px;
   background-color: grey;
+  cursor: pointer;
+  border-radius: 4px;
 }
+
 .RepoListEntry-main:hover{
   background-color: black;
 }

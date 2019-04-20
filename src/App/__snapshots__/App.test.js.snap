@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <div
+      className="EntryForm"
+    >
+      <form
+        action="POST"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="apiKey"
+        >
+          Github API Key:
+        </label>
+        <input
+          name="apiKey"
+          type="text"
+        />
+        <input
+          name="Enter"
+          type="submit"
+        />
+      </form>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <div
+      className="EntryForm"
+    >
+      <form
+        action="POST"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="apiKey"
+        >
+          Github API Key:
+        </label>
+        <input
+          name="apiKey"
+          type="text"
+        />
+        <input
+          name="Enter"
+          type="submit"
+        />
+      </form>
+    </div>
+  </header>
+</div>
+`;

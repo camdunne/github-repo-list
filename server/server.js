@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/api/repositories', (req, res) => {
   const { apiKey } = req.body;
-
-  axios.get('https://api.github.com/user/repos', {
+  // upper limit of 1000 repositories in response, default is 30
+  axios.get('https://api.github.com/user/repos?per_page=1000', {
     headers: {
       Authorization: `token ${apiKey}`
     }
