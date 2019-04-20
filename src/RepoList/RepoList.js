@@ -1,32 +1,28 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import RepoListEntry from '../RepoListEntry/RepoListEntry';
+
+import RepoListEntryContainer from '../RepoListEntry/RepoListEntryContainer';
 import './RepoList.css';
 
 
-const RepoList = ({ repos, apiKey, updateAppState }) =>
-  (
-    <Fragment>
-      {repos.map((repo, i) => (
-        <RepoListEntry
-          key={`repo-${i}`}
-          repo={repo}
-          apiKey={apiKey}
-          updateAppState={updateAppState}
-        />
-      ))}
-    </Fragment>
-  );
+const RepoList = ({ repos }) => (
+  <Fragment>
+    {repos.map((repo, i) => (
+      <RepoListEntryContainer
+        key={`repo-${i}`}
+        repo={repo}
+      />
+    ))}
+  </Fragment>
+);
+
 
 RepoList.propTypes = {
   repos: PropTypes.array,
-  apiKey: PropTypes.string,
-  updateAppState: PropTypes.func.isRequired,
 }
 
 RepoList.defaultTypes = {
   repos: [],
-  apiKey: '',
 }
 
 export default RepoList;

@@ -4,14 +4,13 @@ import IssuesListEntry from '../IssuesListEntry/IssuesListEntry';
 import './IssuesList.css';
 
 
-const IssuesList = ({ issues, apiKey }) =>
+const IssuesList = ({ issues }) =>
   (
     <Fragment>
       {issues.map((issue, i) => (
         <IssuesListEntry
           key={`issue-${i}`}
           issue={issue}
-          apiKey={apiKey}
         />
       ))}
     </Fragment>

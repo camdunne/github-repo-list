@@ -1,57 +1,37 @@
-import React, { Component, Fragment } from 'react';
-import EntryForm from '../EntryForm/EntryForm';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
+import EntryFormContainer from '../EntryForm/EntryFormContainer';
+import RepoListContainer from '../RepoList/RepoListContainer';
+import IssuesListContainer from '../IssuesList/IssuesListContainer';
 import './App.css';
-import RepoList from '../RepoList/RepoList';
-import IssuesList from '../IssuesList/IssuesList';
 
+const App = ({ apiKey }) =>  (
+  <div className='App'>
+    <header className='App-header'>
+      {(!apiKey) ?
+        <EntryFormContainer /> :
 
-class App extends Component {
-  state = {
-    apiKey: "",
-    repos: [],
-    issues: [],
-  }
+        <div className="App-container">
+          <div className="App-col">
+                Repositories
+            <RepoListContainer />
+          </div>
+          <div className="App-col">
+                Issues
+            <IssuesListContainer />
+          </div>
+        </div>
+      }
+    </header>
+  </div>
+)
 
-  getRepos = () => {
-    const { apiKey } = this.state;
-    axios.post('/api/repositories', {
-      apiKey
-    })
-      .then(({ data }) => {
-        this.setState({ repos: data });
-      })
-  }
+App.propTypes = {
+  apiKey: PropTypes.string,
+}
 
-  updateAppState = (newState) => {
-    this.setState(newState);
-  }
-
-  componentDidUpdate(_, prevState) {
-    const { apiKey } = this.state;
-    console.log(this.state)
-    if (apiKey !== prevState.apiKey) {
-      this.getRepos();
-    }
-  }
-
-  render () {
-    const { apiKey, repos, issues } = this.state;
-
-    return (
-      <div className='App'>
-        <header className='App-header'>
-          {(!apiKey) ?
-            <EntryForm updateAppState={this.updateAppState} />
-            : <Fragment>
-              <RepoList repos={repos} apiKey={apiKey} updateAppState={this.updateAppState} />
-              <IssuesList issues={issues} />
-            </Fragment>
-          }
-        </header>
-      </div>
-    )
-  }
+App.defaultProps = {
+  apiKey: '',
 }
 
 export default App;

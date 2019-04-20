@@ -6,13 +6,14 @@ import axios from 'axios';
 class RepoListEntry extends Component {
   
   handleClick = () => {
-    const { repo, apiKey, updateAppState } = this.props;
+    const { repo, apiKey, onClick } = this.props;
     axios.post('/api/issues', {
       apiKey,
       repo
     })
       .then(({ data }) => {
-        updateAppState({ issues: data });
+        onClick(data);
+        window.localStorage.setItem(`issues-${apiKey}`, JSON.stringify(data));
       })
   }
 
@@ -30,7 +31,7 @@ class RepoListEntry extends Component {
 RepoListEntry.propTypes = {
   repo: PropTypes.object,
   apiKey: PropTypes.string,
-  updateAppState: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 RepoListEntry.defaultTypes = {
