@@ -14,7 +14,7 @@ class RepoListEntry extends Component {
       .then(({ data }) => {
         onClick(data);
         window.localStorage.setItem(`issues-${apiKey}`, JSON.stringify(data));
-      })
+      });
   }
 
   render() {
@@ -32,11 +32,11 @@ RepoListEntry.propTypes = {
   repo: PropTypes.object,
   apiKey: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-}
+};
 
 RepoListEntry.defaultTypes = {
   repo: {},
   apiKey: '',
-}
+};
 
 export default RepoListEntry;

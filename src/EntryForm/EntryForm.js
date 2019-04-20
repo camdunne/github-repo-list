@@ -27,7 +27,6 @@ class EntryForm extends Component {
     const { onSetRepos } = this.props;
     let repos = window.localStorage.getItem(`repos-${apiKey}`);
 
-    console.log('repos', repos)
     if (repos) {
       
       repos = JSON.parse(repos);
@@ -42,7 +41,7 @@ class EntryForm extends Component {
       .then(({ data }) => {
         onSetRepos(data);
         window.localStorage.setItem(`repos-${apiKey}`, JSON.stringify(data));
-      })
+      });
   }
 
 
@@ -71,7 +70,7 @@ class EntryForm extends Component {
           />
         </form>
       </div>
-    )
+    );
   }
 }
 
@@ -81,10 +80,10 @@ EntryForm.propTypes = {
   onSetIssues: PropTypes.func.isRequired,
   onSetRepos: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};
 
 EntryForm.defaultTypes = {
   apiKey: '',
-}
+};
 
 export default EntryForm;

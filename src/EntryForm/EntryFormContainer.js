@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import { setApiKey, setIssues, setRepos } from '../actions'
-import EntryForm from './EntryForm'
+import { connect } from 'react-redux';
+import { setApiKey, setIssues, setRepos } from '../actions';
+import EntryForm from './EntryForm';
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (key) => dispatch(setApiKey(key)),
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   null,
   mapDispatchToProps
-)(EntryForm)
+)(EntryForm);

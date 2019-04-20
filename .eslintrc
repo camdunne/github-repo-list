@@ -32,6 +32,7 @@
   "rules": {
     "indent": ["error", 2],
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
-    "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }]
+    "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }],
+    "semi": ["error", "always"]
   }
 }

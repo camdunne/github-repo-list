@@ -24,14 +24,14 @@ const App = ({ apiKey }) =>  (
       }
     </header>
   </div>
-)
+);
 
 App.propTypes = {
   apiKey: PropTypes.string,
-}
+};
 
 App.defaultProps = {
   apiKey: '',
-}
+};
 
 export default App;

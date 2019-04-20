@@ -19,10 +19,10 @@ const RepoList = ({ repos }) => (
 
 RepoList.propTypes = {
   repos: PropTypes.array,
-}
+};
 
 RepoList.defaultTypes = {
   repos: [],
-}
+};
 
 export default RepoList;

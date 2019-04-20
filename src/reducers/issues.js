@@ -1,10 +1,10 @@
 const issues = (state = [], action) => {
   switch (action.type) {
   case 'SET_ISSUES':
-    return action.issues
+    return action.issues;
   default:
-    return state
+    return state;
   }
-}
+};
 
 export default issues;

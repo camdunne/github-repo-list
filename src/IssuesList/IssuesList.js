@@ -19,11 +19,11 @@ const IssuesList = ({ issues }) =>
 IssuesList.propTypes = {
   issues: PropTypes.array,
   apiKey: PropTypes.string
-}
+};
 
 IssuesList.defaultTypes = {
   issues: [],
   apiKey: '',
-}
+};
 
 export default IssuesList;

@@ -1,17 +1,17 @@
 function parseRepos(array) {
   return array.map(({ full_name, issues_url }) => {
-    issues_url = issues_url.replace(/\{\/number\}/, '')
+    issues_url = issues_url.replace(/\{\/number\}/, '');
 
     return ({
       full_name,
       issues_url
     });
-  })
+  });
 }
 
 function parseIssues(array) {
   return array.map(({ id, title, assignee, created_at, updated_at }) => {
-    const assigneeAvatar = assignee && assignee.avatar_url
+    const assigneeAvatar = assignee && assignee.avatar_url;
 
     return ({
       id,
@@ -20,8 +20,8 @@ function parseIssues(array) {
       created_at,
       updated_at,
     });
-  })
+  });
 }
 
-module.exports.parseRepos = parseRepos
-module.exports.parseIssues = parseIssues
+module.exports.parseRepos = parseRepos;
+module.exports.parseIssues = parseIssues;
